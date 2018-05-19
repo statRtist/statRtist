@@ -2,8 +2,8 @@ baseurl = "/"
 languageCode = "en-us"
 title = "statRtist"
 theme = "hugo-lithium"
-googleAnalytics = "UA-119528155-1"
-disqusShortname = ""
+googleAnalytics = "UA-119544820-1"
+disqusShortname = "www-statrtist-com"
 ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 
 [permalinks]
