@@ -7,8 +7,6 @@
 }
 ---
 
-This homework is designed to practice the skills we learned in up until Lecture 3: working with loops, conditions, functions, and the built-in Python data structures. Make sure to go through the lecture again in case you have any troubles.
-
 **Note: You may not use higher-level library functions but should implement everything using functions, loops, and conditions.**
 
 [(see also Questions)]({{< ref "2018-hw1-olsen-questions.md" >}})
