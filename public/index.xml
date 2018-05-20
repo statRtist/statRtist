@@ -6,18 +6,33 @@
     <description>Recent content on statRtist</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 19 May 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 19 Jan 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Test</title>
-      <link>/2018/05/19/test/</link>
-      <pubDate>Sat, 19 May 2018 00:00:00 +0000</pubDate>
+      <title>Introduction to Data Science - Homework 1 Solutions</title>
+      <link>/2018/01/19/itds-2018-hw1-olsen-solutions/</link>
+      <pubDate>Fri, 19 Jan 2018 00:00:00 +0000</pubDate>
       
-      <guid>/2018/05/19/test/</guid>
-      <description>Hello World!</description>
+      <guid>/2018/01/19/itds-2018-hw1-olsen-solutions/</guid>
+      <description>This homework is designed to practice the skills we learned in up until Lecture 3: working with loops, conditions, functions, and the built-in Python data structures. Make sure to go through the lecture again in case you have any troubles.
+Note: You may not use higher-level library functions but should implement everything using functions, loops, and conditions.
+(see also Questions)
+Problem 1 - Largest Element Write a function that returns the largest element in a list.</description>
+    </item>
+    
+    <item>
+      <title>Introduction to Data Science - Homework 1 Questions</title>
+      <link>/2018/01/18/itds-2018-hw1-olsen-questions/</link>
+      <pubDate>Thu, 18 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/2018/01/18/itds-2018-hw1-olsen-questions/</guid>
+      <description>This homework is designed to practice the skills we learned in up until Lecture 3: working with loops, conditions, functions, and the built-in Python data structures. Make sure to go through the lecture again in case you have any troubles.
+Note: You may not use higher-level library functions but should implement everything using functions, loops, and conditions.
+(see also Solutions)
+Problem 1 - Largest Element Write a function that returns the largest element in a list.</description>
     </item>
     
     <item>

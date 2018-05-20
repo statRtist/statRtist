@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.40.3" />
+
+
+<title>Introduction to Data Science - Homework 1 Solutions - Generic subtitle  - statRtist</title>
+<meta property="og:title" content="Introduction to Data Science - Homework 1 Solutions - statRtist">
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdn.bootcss.com/highlight.js/9.11.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="https://github.com/statRtist">GitHub</a></li>
+    
+    <li><a href="https://twitter.com/statRtist">Twitter</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">4 min read</span>
+    
+
+    <h1 class="article-title">Introduction to Data Science - Homework 1 Solutions</h1>
+
+    
+    <span class="article-date">2018/01/19</span>
+    
+
+    <div class="article-content">
+      
+
+<p>This homework is designed to practice the skills we learned in up until Lecture 3: working with loops, conditions, functions, and the built-in Python data structures. Make sure to go through the lecture again in case you have any troubles.</p>
+
+<p><strong>Note: You may not use higher-level library functions but should implement everything using functions, loops, and conditions.</strong></p>
+
+<p><a href="/2018/01/18/itds-2018-hw1-olsen-questions/">(see also Questions)</a></p>
+
+<h2 id="problem-1-largest-element">Problem 1 - Largest Element</h2>
+
+<p>Write a function that returns the largest element in a list.</p>
+
+<pre><code class="language-python">def get_largest_element(my_list):
+    if len(my_list)==0:
+        return None
+    my_max = my_list[0] # not efficient but works
+    for element in my_list:
+        if element &gt; my_max:
+            my_max = element
+    return my_max
+</code></pre>
+
+<pre><code class="language-python">get_largest_element([13, 25, 29, 17, 99, 133, -12, 0, 18])
+</code></pre>
+
+<pre><code>133
+</code></pre>
+
+<h2 id="problem-2-reverse-list">Problem 2 - Reverse List</h2>
+
+<p>Write function that reverses a list.</p>
+
+<pre><code class="language-python">def reverse_list(my_list):
+    if len(my_list)==0:
+        return []
+    output_list = []
+    for i in range(len(my_list),0,-1):
+        output_list.append(my_list[i-1])
+    return output_list
+</code></pre>
+
+<pre><code class="language-python">reverse_list([13, 25, 29, 17, 99, 133, -12, 0, 18])
+</code></pre>
+
+<pre><code>[18, 0, -12, 133, 99, 17, 29, 25, 13]
+</code></pre>
+
+<h2 id="problem-3-combining-list">Problem 3 - Combining List</h2>
+
+<p>Write a function that combines two lists by alternatingly taking elements, e.g. [a,b,c], [1,2,3] → [a,1,b,2,c,3].</p>
+
+<pre><code class="language-python">def combine_two_lists(my_list1, my_list2, add_extra=False):
+    if len(my_list1)==0 and len(my_list2)==0:
+        return []
+    output_list = []
+    list_length = min(len(my_list1),len(my_list2))
+    for i in range(0,list_length,1):
+        output_list.append(my_list1[i])
+        output_list.append(my_list2[i])
+        
+    if add_extra:
+        if len(my_list1) &gt; list_length:
+            for i in range(list_length + 1,len(my_list1),1):
+                output_list.append(my_list1[i])
+        if len(my_list2) &gt; list_length:
+            for i in range(list_length + 1,len(my_list2),1):
+                output_list.append(my_list2[i])
+    return output_list
+</code></pre>
+
+<pre><code class="language-python">combine_two_lists(['a','b','c'], [1,2,3])
+</code></pre>
+
+<pre><code>['a', 1, 'b', 2, 'c', 3]
+</code></pre>
+
+<h2 id="problem-4-numbers-to-digits">Problem 4 - Numbers to Digits</h2>
+
+<p>Write a function that takes a number and returns a list of its digits.</p>
+
+<pre><code class="language-python">def is_number(s):
+    try:
+        float(s)
+        return True
+    except ValueError:
+        return False
+
+def number_to_list(my_number):
+    if not is_number(my_number):
+        return None
+    my_number_string = str(my_number).replace('.','')
+    return [int(x) for x in my_number_string]
+</code></pre>
+
+<pre><code class="language-python">number_to_list(3666)
+</code></pre>
+
+<pre><code>[3, 6, 6, 6]
+</code></pre>
+
+<pre><code class="language-python">number_to_list(3666.56)
+</code></pre>
+
+<pre><code>[3, 6, 6, 6, 5, 6]
+</code></pre>
+
+<h2 id="problem-5-sums">Problem 5 - Sums</h2>
+
+<p>Write three functions that compute the sum of the numbers in a list: using a for-loop, a while-loop and recursion.</p>
+
+<pre><code class="language-python">def sum_list_for_loop(my_list):
+    if len(my_list)==0:
+        return None
+    my_sum = 0
+    for x in my_list:
+        my_sum += x
+    return my_sum
+
+def sum_list_while_loop(my_list):
+    if len(my_list)==0:
+        return None
+    my_sum = 0
+    loop_i = 0
+    while loop_i &lt; len(my_list):
+        my_sum += my_list[loop_i]
+        loop_i += 1
+    return my_sum
+
+def sum_list_recursion(my_list):
+    if len(my_list)==0:
+        return None
+    if len(my_list) == 1:
+        return my_list[0]
+    else:
+        return my_list[0] + sum_list_recursion(my_list[1:])
+</code></pre>
+
+<pre><code class="language-python">print(sum_list_for_loop([2,3,4]))
+print(sum_list_while_loop([2,3,4]))
+print(sum_list_recursion([2,3,4]))
+</code></pre>
+
+<pre><code>9
+9
+9
+</code></pre>
+
+<h2 id="problem-6-fibonacchi-sequence">Problem 6 - Fibonacchi Sequence</h2>
+
+<p>Write a function that takes a number n and an empty array that writes the first n numbers of the Fibonacchi Sequence into the empty array. Print the array.</p>
+
+<p>The Fibonnachi Sequnece where every number after the first two is the sum of the previous two numbers, i.e.,</p>
+
+<p>1, 1, 2, 3, 5, 8, 13, 21, 34, 55, &hellip;</p>
+
+<pre><code class="language-python">def fibonacchi_n_seq(n, should_print=False):
+    if type(n)!=int or n&lt;=0:
+        return None
+        
+    output_list = []
+    if n &gt;= 1:
+        output_list.append(1)
+        if n &gt;= 2:
+            output_list.append(1)
+            if n &gt;= 3:    
+                for i in range(2,n,1):
+                    output_list.append(output_list[i-1] + output_list[i-2])
+    if should_print: # directions were not clear if the function should print the list
+        print(output_list)
+    return output_list
+</code></pre>
+
+<pre><code class="language-python">fibonacchi_n_seq(1,True)
+fibonacchi_n_seq(2,True)
+fibonacchi_n_seq(3,True)
+fibonacchi_n_seq(10,True)
+</code></pre>
+
+<pre><code>[1]
+[1, 1]
+[1, 1, 2]
+[1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
+
+
+
+
+
+[1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
+</code></pre>
+
+<h2 id="problem-7-rainfall">Problem 7 - Rainfall</h2>
+
+<p>Write a function called rainfall that reads a list of numbers representing daily rainfall amounts. The list may contain the number -999 indicating the end of the data of interest. Produce the average of the non-negative values in the list up to the first -999 (if it shows up). There may be negative numbers other than -999 in the list.</p>
+
+<p>We provide you with several different test arrays, but your code should work with arbitrary arrays.</p>
+
+<pre><code class="language-python">rainfall_one = [16, 19, 22, 41, -999, 199, 254]
+rainfall_two = [33, 24, 10, -2, -99, 0, 15, 82, -1325, 15]
+rainfall_three = [2, 2, -999, 10]
+rainfall_four = [-999, 2, 5, -19, 16]
+rainfall_five = []
+</code></pre>
+
+<pre><code class="language-python">def rainfall(rainfall_list):
+    if len(rainfall_list)==0 or rainfall_list[0] == -999:
+        return None # not sure what to return in this case
+    if -999 in rainfall_list:
+        filtered_list1 = rainfall_list[0:rainfall_list.index(-999)]
+    else:
+        filtered_list1 = rainfall_list
+        
+    filtered_list2 = [x for x in filtered_list1 if x &gt;=0]
+    if len(filtered_list2)==0:
+        return None  # not sure what to return in this case
+    return sum_list_for_loop(filtered_list2)/len(filtered_list2)
+</code></pre>
+
+<pre><code class="language-python"># print the results for all the lists above here
+rainfall(rainfall_one)
+</code></pre>
+
+<pre><code>24.5
+</code></pre>
+
+<pre><code class="language-python">rainfall(rainfall_two)
+</code></pre>
+
+<pre><code>25.571428571428573
+</code></pre>
+
+<pre><code class="language-python">rainfall(rainfall_three)
+</code></pre>
+
+<pre><code>2.0
+</code></pre>
+
+<pre><code class="language-python">rainfall(rainfall_four)
+</code></pre>
+
+<pre><code class="language-python">rainfall(rainfall_five)
+</code></pre>
+
+<pre><code class="language-python">rainfall([-2,-2,-999,4])
+</code></pre>
+
+    </div>
+  </article>
+
+  
+<section id="comments">
+  <div id="disqus_thread"></div>
+  <script>
+  var disqus_config = function () {
+  
+  };
+  (function() {
+    var inIFrame = function() {
+      var iframe = true;
+      try { iframe = window.self !== window.top; } catch (e) {}
+      return iframe;
+    };
+    if (inIFrame()) return;
+    var d = document, s = d.createElement('script');
+    s.src = '//www-statrtist-com.disqus.com/embed.js'; s.async = true;
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="/index.xml" type="application/rss+xml" target="_blank">RSS feed</a>
+          </li>
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/highlight.min.js"></script>
+
+
+
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/languages/r.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+
+    
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-119544820-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+  </body>
+</html>
+
